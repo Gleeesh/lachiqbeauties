@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -28,14 +28,37 @@ const otherServices = [
 export default function Home(): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showHeroContent, setShowHeroContent] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Header stays pinned until hero section reaches top, then fades out
+      const heroSection = document.getElementById("home");
+      if (heroSection) {
+        const rect = heroSection.getBoundingClientRect();
+        if (rect.top <= 0) {
+          setShowHeader(false);
+        } else {
+          setShowHeader(true);
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="font-sans text-gray-800 bg-pink-200">
       {/* Header */}
-      <header className="p-6 bg-pink-200 top-0 w-full z-50 flex flex-col items-center justify-center">
+      <motion.header
+        className="p-6 bg-pink-200 top-0 w-full z-50 flex flex-col items-center justify-center sticky"
+        initial={{ opacity: 1, y: 0 }}
+        animate={showHeader ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
         <span className="flex items-center">
           <Image
-            src="/assets/logo1.png"
+            src="/assets/logo.png"
             alt="LaChiqBeauties Logo"
             width={300}
             height={50}
@@ -98,7 +121,7 @@ export default function Home(): React.ReactElement {
         >
           <Menu size={28} />
         </button>
-      </header>
+      </motion.header>
 
       {/* Mobile Side Menu */}
       {menuOpen && (
@@ -148,49 +171,42 @@ export default function Home(): React.ReactElement {
 
       {/* Hero Section */}
       <section
-        id="home"
-        className="relative h-screen flex items-center justify-center bg-pink-200 m-10"
-        style={{ overflow: "hidden" }}
-      >
-        <div className="w-full h-full flex flex-col md:flex-row items-center justify-center">
-          {/* Left Column: Slanted Animated Grid */}
-          <div className="relative w-full md:w-1/2 h-[400px] md:h-full flex items-center justify-center">
-            <SlantedAnimatedGrid onReveal={() => setShowHeroContent(true)} />
-              <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: showHeroContent ? 1 : 0, y: showHeroContent ? 0 : 40 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex items-center justify-center w-full h-full"
-              style={{ pointerEvents: showHeroContent ? "auto" : "none" }}
-              >
-              <div className="bg-none p-8  text-center mx-auto z-50">
-                <h2
-                  className="text-4xl md:text-6xl mb-6 text-white"
-                  style={{ fontFamily: "'Story Script', cursive" }}
-                >
-                  From classic to chic—we’ve got your style covered
-                </h2>
-                <Button
-                  asChild
-                  className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg focus:ring-2 focus:ring-rose-900 focus:ring-offset-2 transition-all duration-300 hover:focus:ring-pink-600"
-                >
-                  <a
-                    href="https://wa.me/254710101118"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Book an Appointment
-                  </a>
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-          {/* Right Column: Hero Content */}
-          <div className="relative w-full md:w-1/2 h-[400px] md:h-full flex items-center justify-center">
-            
-          </div>
-        </div>
-      </section>
+  id="home"
+  className="relative h-screen flex items-center justify-center bg-pink-200"
+  style={{ overflow: "hidden" }}
+>
+  <div className="relative w-full h-full flex items-center justify-center">
+    <SlantedAnimatedGrid onReveal={() => setShowHeroContent(true)} />
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: showHeroContent ? 1 : 0, y: showHeroContent ? 0 : 40 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="absolute inset-0 flex items-center justify-center"
+      style={{ pointerEvents: showHeroContent ? "auto" : "none" }}
+    >
+      <div className="bg-none p-8 text-center mx-auto z-50 w-1/2">
+        <h2
+          className="text-4xl md:text-6xl mb-6 text-white"
+          style={{ fontFamily: "'Story Script', cursive" }}
+        >
+          From classic to chic—we’ve got your style covered
+        </h2>
+        <Button
+          asChild
+          className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg focus:ring-2 focus:ring-rose-900 focus:ring-offset-2 transition-all duration-300 hover:focus:ring-pink-600"
+        >
+          <a
+            href="https://wa.me/254710101118"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book an Appointment
+          </a>
+        </Button>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* Services Section */}
       <section id="services" className="py-20 px-6 md:px-20 bg-pink-50">

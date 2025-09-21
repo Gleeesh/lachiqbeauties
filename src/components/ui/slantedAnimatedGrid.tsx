@@ -22,6 +22,7 @@ const images = [
 ];
 
 export function SlantedAnimatedGrid({ onReveal }: { onReveal: () => void }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showGradient, setShowGradient] = useState(false);
 
   // Gradient overlay appears every 15 seconds for 3 seconds
@@ -41,10 +42,6 @@ export function SlantedAnimatedGrid({ onReveal }: { onReveal: () => void }) {
   return (
     <div
       className="absolute inset-0 w-full h-full overflow-hidden border-8 border-rose-900"
-      style={{
-        clipPath:
-          "polygon(30% 5%, 70% 5%, 95% 30%, 95% 70%, 70% 95%, 30% 95%, 5% 70%, 5% 30%)",
-      }}
     >
       {/* Grid content with infinite animation */}
       <div className="grid grid-cols-4 grid-rows-4 w-full h-full">
@@ -63,7 +60,7 @@ export function SlantedAnimatedGrid({ onReveal }: { onReveal: () => void }) {
               transition={{
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 2,
+                duration: 5, 
                 delay: i * 0.1,
               }}
               className="absolute inset-0 bg-rose-900 pointer-events-none"
@@ -71,18 +68,6 @@ export function SlantedAnimatedGrid({ onReveal }: { onReveal: () => void }) {
           </div>
         ))}
       </div>
-
-      {/* Gradient overlay appears every 15 seconds for 3 seconds */}
-      <motion.div
-        initial={{ y: "-100%" }}
-        animate={{ y: showGradient ? "0%" : "-100%" }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-        className="absolute inset-0 z-10 bg-gradient-to-br from-pink-500 via-rose-900 to-yellow-400 opacity-80 pointer-events-none"
-        style={{
-          clipPath:
-            "polygon(30% 5%, 70% 5%, 95% 30%, 95% 70%, 70% 95%, 30% 95%, 5% 70%, 5% 30%)",
-        }}
-      />
     </div>
   );
 }
