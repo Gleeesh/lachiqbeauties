@@ -6,6 +6,7 @@ import { Instagram, Facebook, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { SlantedAnimatedGrid } from "@/components/ui/slantedAnimatedGrid";
 
 const services = [
   { name: "Gel", price: "400" },
@@ -23,11 +24,13 @@ const otherServices = [
   { name: "Individual Lashes", price: "2500" },
 ];
 
+
 export default function Home(): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showHeroContent, setShowHeroContent] = useState(false);
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-gray-800 bg-pink-200">
       {/* Header */}
       <header className="p-6 bg-pink-200 top-0 w-full z-50 flex flex-col items-center justify-center">
         <span className="flex items-center">
@@ -146,31 +149,46 @@ export default function Home(): React.ReactElement {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative h-screen flex items-center justify-center bg-cover bg-center bg-pink-200"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1603079706899-40d2d7b9f6bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
-        }}
+        className="relative h-screen flex items-center justify-center bg-pink-200 m-10"
+        style={{ overflow: "hidden" }}
       >
-        <div className="bg-white bg-opacity-40 p-8 rounded-xl text-center text-black">
-          <h2
-            className="text-4xl md:text-6xl mb-6 text-rose-900"
-            style={{ fontFamily: "'Story Script', cursive" }}
-          >
-            From classic to chic—we’ve got your style covered
-          </h2>
-          <Button
-            asChild
-            className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg focus:ring-2 focus:ring-rose-900 focus:ring-offset-2 transition-all duration-300 hover:focus:ring-0"
-          >
-            <a
-              href="https://wa.me/254710101118"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book an Appointment
-            </a>
-          </Button>
+        <div className="w-full h-full flex flex-col md:flex-row items-center justify-center">
+          {/* Left Column: Slanted Animated Grid */}
+          <div className="relative w-full md:w-1/2 h-[400px] md:h-full flex items-center justify-center">
+            <SlantedAnimatedGrid onReveal={() => setShowHeroContent(true)} />
+              <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: showHeroContent ? 1 : 0, y: showHeroContent ? 0 : 40 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="flex items-center justify-center w-full h-full"
+              style={{ pointerEvents: showHeroContent ? "auto" : "none" }}
+              >
+              <div className="bg-none p-8  text-center mx-auto z-50">
+                <h2
+                  className="text-4xl md:text-6xl mb-6 text-white"
+                  style={{ fontFamily: "'Story Script', cursive" }}
+                >
+                  From classic to chic—we’ve got your style covered
+                </h2>
+                <Button
+                  asChild
+                  className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg focus:ring-2 focus:ring-rose-900 focus:ring-offset-2 transition-all duration-300 hover:focus:ring-pink-600"
+                >
+                  <a
+                    href="https://wa.me/254710101118"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book an Appointment
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+          {/* Right Column: Hero Content */}
+          <div className="relative w-full md:w-1/2 h-[400px] md:h-full flex items-center justify-center">
+            
+          </div>
         </div>
       </section>
 
