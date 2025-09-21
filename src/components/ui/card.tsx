@@ -9,10 +9,10 @@ export const Card = React.forwardRef<
   const [name, setName] = React.useState("");
   const [time, setTime] = React.useState("");
 
-  const whatsappNumber = "254797849427"; // Replace with your WhatsApp number
+  const whatsappNumber = "254797849427";
 
   const handleConfirm = () => {
-    const message = `Hi, my name is ${name}. I’d like to book ${service} at ${time}.`;
+    const message = `Hi, my name is ${name}. I'd like to book ${service} at ${time}.`;
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -26,74 +26,97 @@ export const Card = React.forwardRef<
     <div
       ref={ref}
       className={clsx(
-        "rounded-xl border bg-white text-gray-900 shadow-sm p-4",
+        "relative rounded-xl border border-rose-800 text-white shadow-lg overflow-hidden",
         className
       )}
       {...props}
     >
-      {props.children}
-
-      {/* Book Now Button */}
-      <button
-        onClick={() => setOpen(true)}
-        className="mt-4 w-full rounded-lg bg-blue-600 px-4 py-2 text-white font-semibold hover:bg-blue-700"
-      >
-        Book Now
-      </button>
-
-      {/* Booking Form */}
-      {open && (
-        <div className="mt-4 border-t pt-4">
-          <div className="mb-2">
-            <label className="block text-sm font-medium">Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-md border px-3 py-2"
-              placeholder="Enter your name"
-            />
-          </div>
-
-          <div className="mb-2">
-            <label className="block text-sm font-medium">Preferred Time</label>
-            <input
-              type="text"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              className="w-full rounded-md border px-3 py-2"
-              placeholder="e.g. Tomorrow 3 PM"
-            />
-          </div>
-
-          <div className="mb-2">
-            <label className="block text-sm font-medium">Service</label>
-            <input
-              type="text"
-              value={service}
-              readOnly
-              className="w-full rounded-md border px-3 py-2 bg-gray-100"
-            />
-          </div>
-
-          {/* Confirm & Cancel */}
-          <div className="flex justify-end gap-2 mt-4">
-            <button
-              onClick={() => setOpen(false)}
-              className="rounded-lg border px-4 py-2"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleConfirm}
-              className="rounded-lg bg-green-600 px-4 py-2 text-white font-semibold hover:bg-green-700"
-              disabled={!name || !time}
-            >
-              Confirm
-            </button>
-          </div>
+      {/* Wavy background */}
+      <div className="absolute inset-0 z-0">
+        {/* Top wave */}
+        <div className="absolute top-0 left-0 w-full h-6">
+          <svg viewBox="0 0 500 30" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,10 C150,20 350,0 500,10 L500,30 L0,30 Z" className="fill-rose-900" />
+          </svg>
         </div>
-      )}
+        
+        {/* Main background */}
+        <div className="absolute inset-0 bg-rose-900 pt-6 pb-8"></div>
+        
+        {/* Bottom wave */}
+        <div className="absolute bottom-0 left-0 w-full h-6">
+          <svg viewBox="0 0 500 30" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,20 C150,10 350,30 500,20 L500,0 L0,0 Z" className="fill-rose-900" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 p-6">
+        {props.children}
+
+        {/* Book Now Button */}
+        <button
+          onClick={() => setOpen(true)}
+          className="mt-4 w-full rounded-lg bg-white px-4 py-2 text-rose-900 font-semibold hover:bg-rose-50 transition-colors duration-200"
+        >
+          Book Now
+        </button>
+
+        {/* Booking Form */}
+        {open && (
+          <div className="mt-4 border-t border-rose-800 pt-4">
+            <div className="mb-3">
+              <label className="block text-sm font-medium text-rose-100">Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full rounded-md border border-rose-800 bg-rose-800 text-white px-3 py-2 placeholder-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-300"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="block text-sm font-medium text-rose-100">Preferred Time</label>
+              <input
+                type="text"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                className="w-full rounded-md border border-rose-800 bg-rose-800 text-white px-3 py-2 placeholder-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-300"
+                placeholder="e.g. Tomorrow 3 PM"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="block text-sm font-medium text-rose-100">Service</label>
+              <input
+                type="text"
+                value={service}
+                readOnly
+                className="w-full rounded-md border border-rose-800 bg-rose-800/50 text-rose-200 px-3 py-2 cursor-not-allowed"
+              />
+            </div>
+
+            {/* Confirm & Cancel */}
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                onClick={() => setOpen(false)}
+                className="rounded-lg border border-rose-700 px-4 py-2 text-rose-100 hover:bg-rose-800 transition-colors duration-200"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirm}
+                className="rounded-lg bg-white px-4 py-2 text-rose-900 font-semibold hover:bg-rose-50 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!name || !time}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 });
@@ -103,6 +126,10 @@ export const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={clsx("p-4", className)} {...props} />
+  <div 
+    ref={ref} 
+    className={clsx("p-4 text-rose-50", className)} 
+    {...props} 
+  />
 ));
 CardContent.displayName = "CardContent";

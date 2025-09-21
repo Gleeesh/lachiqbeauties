@@ -29,23 +29,64 @@ export default function Home(): React.ReactElement {
   return (
     <div className="font-sans text-gray-800 bg-white">
       {/* Header */}
-      <header className="flex justify-between items-center p-6 shadow-md bg-white fixed top-0 w-full z-50">
+      <header className="p-6 bg-pink-200 top-0 w-full z-50 flex flex-col items-center justify-center">
         <span className="flex items-center">
           <Image
-            src="/assets/logo.png"
+            src="/assets/logo1.png"
             alt="LaChiqBeauties Logo"
-            width={170}
-            height={80}
+            width={300}
+            height={50}
           />
         </span>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6 text-gray-700 font-medium">
-          <a href="#home" className="hover:text-pink-400 transition">Home</a>
-          <a href="#services" className="hover:text-pink-400 transition">Services</a>
-          <a href="#book" className="hover:text-pink-400 transition">Book Now</a>
-          <a href="#contact" className="hover:text-pink-400 transition">Contact</a>
+        <nav className="hidden md:flex space-x-20 text-rose-900 font-medium">
+          <a
+            href="#home"
+            className="relative group"
+          >
+            Home
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#services"
+            className="relative group"
+          >
+            Services
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#book"
+            className="relative group"
+          >
+            Book Now
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#contact"
+            className="relative group"
+          >
+            Contact
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
         </nav>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -105,26 +146,29 @@ export default function Home(): React.ReactElement {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative h-screen flex items-center justify-center bg-cover bg-center"
+        className="relative h-screen flex items-center justify-center bg-cover bg-center bg-pink-200"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1603079706899-40d2d7b9f6bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
         }}
       >
-        <div className="bg-black bg-opacity-40 p-8 rounded-xl text-center text-white">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">LA CHIQ</h2>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">BEAUTIES</h2>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">Home of Elegance</h2>
+        <div className="bg-white bg-opacity-40 p-8 rounded-xl text-center text-black">
+          <h2
+            className="text-4xl md:text-6xl mb-6 text-rose-900"
+            style={{ fontFamily: "'Story Script', cursive" }}
+          >
+            From classic to chic—we’ve got your style covered
+          </h2>
           <Button
             asChild
-            className="bg-pink-500 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg"
+            className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg focus:ring-2 focus:ring-rose-900 focus:ring-offset-2 transition-all duration-300 hover:focus:ring-0"
           >
             <a
               href="https://wa.me/254710101118"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Book Your Appointment on WhatsApp
+              Book an Appointment
             </a>
           </Button>
         </div>
@@ -219,8 +263,69 @@ export default function Home(): React.ReactElement {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t py-6 text-center text-sm text-gray-500">
-        <p>© {new Date().getFullYear()} LaChiqBeauties. All rights reserved.</p>
+      <footer className="w-full flex flex-col items-center justify-center p-6 bg-white border-t">
+        <span className="flex items-center mb-4">
+          <Image
+            src="/assets/logo.png"
+            alt="LaChiqBeauties Logo"
+            width={300}
+            height={50}
+          />
+        </span>
+        <nav className="flex space-x-20 text-rose-900 font-medium mb-4">
+          <a
+            href="#home"
+            className="relative group"
+          >
+            Home
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#services"
+            className="relative group"
+          >
+            Services
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#book"
+            className="relative group"
+          >
+            Book Now
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#contact"
+            className="relative group"
+          >
+            Contact
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+        </nav>
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-sm text-gray-500">
+            © {new Date().getFullYear()} LaChiqBeauties. All rights reserved.
+          </p>
+          <p className="text-xs text-gray-400">
+            Home of Elegance
+          </p>
+        </div>
       </footer>
     </div>
   );
