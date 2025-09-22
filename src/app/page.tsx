@@ -175,45 +175,45 @@ export default function Home(): React.ReactElement {
 
       {/* Hero Section */}
       <section
-  id="home"
-  className="relative h-screen flex items-center justify-center bg-pink-200"
-  style={{ overflow: "hidden" }}
->
-  <div className="relative w-full h-full flex items-center justify-center">
-    <SlantedAnimatedGrid onReveal={() => setShowHeroContent(true)} />
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: showHeroContent ? 1 : 0, y: showHeroContent ? 0 : 40 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="absolute inset-0 flex items-center justify-center"
-      style={{ pointerEvents: showHeroContent ? "auto" : "none" }}
-    >
-      <div className="bg-none p-8 text-center mx-auto z-50 w-1/2">
-        <h2
-          className="text-4xl md:text-6xl mb-6 text-white"
-          style={{ fontFamily: "'Story Script', cursive" }}
-        >
-          From classic to chic—we’ve got your style covered
-        </h2>
-        <Button
-          asChild
-          className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg ring-2 ring-rose-900 ring-offset-2 transition-all duration-300"
-        >
-          <a
-            href="https://wa.me/254710101118"
-            target="_blank"
-            rel="noopener noreferrer"
+        id="home"
+        className="relative h-screen flex items-center justify-center bg-pink-200"
+        style={{ overflow: "hidden" }}
+      >
+        <div className="relative w-full h-full flex items-center justify-center">
+          <SlantedAnimatedGrid onReveal={() => setShowHeroContent(true)} />
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: showHeroContent ? 1 : 0, y: showHeroContent ? 0 : 40 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ pointerEvents: showHeroContent ? "auto" : "none" }}
           >
-            Book an Appointment
-          </a>
-        </Button>
-      </div>
-    </motion.div>
-  </div>
-</section>
+            <div className="bg-none p-8 text-center mx-auto z-50 w-1/2">
+              <h2
+                className="text-4xl md:text-6xl mb-6 text-white"
+                style={{ fontFamily: "'Story Script', cursive" }}
+              >
+                From classic to chic—we’ve got your style covered
+              </h2>
+              <Button
+                asChild
+                className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg ring-2 ring-rose-900 ring-offset-2 transition-all duration-300"
+              >
+                <a
+                  href="https://wa.me/254710101118"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book an Appointment
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-6 md:px-20 bg-pink-50">
+      <section id="services" className="py-10 md:px-20 bg-pink-200">
         <FeaturedServices />
       </section>
 
