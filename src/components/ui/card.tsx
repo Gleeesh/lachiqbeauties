@@ -34,7 +34,7 @@ export const Card = React.forwardRef<
       {/* Wavy background */}
       <div className="absolute inset-0 z-0">
         {/* Top wave */}
-        <div className="absolute top-0 left-0 w-full h-6">
+        <div className="absolute top-0 left-0 w-full h-75%">
           <svg viewBox="0 0 500 30" preserveAspectRatio="none" className="w-full h-full">
             <path d="M0,10 C150,20 350,0 500,10 L500,30 L0,30 Z" className="fill-rose-900" />
           </svg>

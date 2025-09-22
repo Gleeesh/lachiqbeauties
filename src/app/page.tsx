@@ -9,14 +9,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SlantedAnimatedGrid } from "@/components/ui/slantedAnimatedGrid";
 
 const services = [
-  { name: "Gel", price: "400" },
-  { name: "Tips", price: "1000" },
-  { name: "Builder Gel", price: "1100" },
-  { name: "Builder Gel with Tips Extensions", price: "1400" },
-  { name: "Gumgels on Natural Nails", price: "1500" },
-  { name: "Gumgels with Extensions", price: "1800" },
-  { name: "Acrylics on Natural Nails", price: "2000" },
-  { name: "Acrylics Extensions", price: "2500" },
+  { name: "Manicure", price: "from 400ksh" },
+  { name: "Pedicure", price: "from 600ksh" },
+  { name: "Lashes", price: "from 1500ksh" },
 ];
 
 const otherServices = [
@@ -29,6 +24,7 @@ export default function Home(): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showHeroContent, setShowHeroContent] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +47,7 @@ export default function Home(): React.ReactElement {
     <div className="font-sans text-gray-800 bg-pink-200">
       {/* Header */}
       <motion.header
-        className="p-6 bg-pink-200 top-0 w-full z-50 flex flex-col items-center justify-center sticky"
+        className="p-6 bg-none top-0 w-full z-50 flex flex-col items-center justify-center sticky"
         initial={{ opacity: 1, y: 0 }}
         animate={showHeader ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -193,7 +189,7 @@ export default function Home(): React.ReactElement {
         </h2>
         <Button
           asChild
-          className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg focus:ring-2 focus:ring-rose-900 focus:ring-offset-2 transition-all duration-300 hover:focus:ring-pink-600"
+          className="bg-rose-900 hover:bg-pink-600 text-white text-lg px-6 py-3 rounded-2xl shadow-lg ring-2 ring-rose-900 ring-offset-2 transition-all duration-300"
         >
           <a
             href="https://wa.me/254710101118"
