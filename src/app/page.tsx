@@ -5,20 +5,10 @@ import { motion } from "framer-motion";
 import { Instagram, Facebook, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { SlantedAnimatedGrid } from "@/components/ui/slantedAnimatedGrid";
-
-const services = [
-  { name: "Manicure", price: "from 400ksh" },
-  { name: "Pedicure", price: "from 600ksh" },
-  { name: "Lashes", price: "from 1500ksh" },
-];
-
-const otherServices = [
-  { name: "Cluster Lashes", price: "1500" },
-  { name: "Individual Lashes", price: "2500" },
-];
-
+import FeaturedServices from "@/components/ui/featuredServices";
+import PricingTabs from "@/components/ui/pricingTabs";
+import AboutSection from "@/components/ui/aboutSection";
 
 export default function Home(): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -86,10 +76,21 @@ export default function Home(): React.ReactElement {
             ></span>
           </a>
           <a
-            href="#book"
+            href="#about"
             className="relative group"
           >
-            Book Now
+            About
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#pricing"
+            className="relative group"
+          >
+            Price List
             <span
               className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
               transition-all duration-[800ms] origin-center
@@ -149,11 +150,18 @@ export default function Home(): React.ReactElement {
             Services
           </a>
           <a
-            href="#book"
+            href="#about"
             className="text-gray-800 hover:text-pink-500 transition"
             onClick={() => setMenuOpen(false)}
           >
-            Book Now
+            About
+          </a>
+          <a
+            href="#pricing"
+            className="text-gray-800 hover:text-pink-500 transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Price List
           </a>
           <a
             href="#contact"
@@ -206,68 +214,17 @@ export default function Home(): React.ReactElement {
 
       {/* Services Section */}
       <section id="services" className="py-20 px-6 md:px-20 bg-pink-50">
-        <h3 className="text-3xl font-bold text-center text-pink-600 mb-12">
-          Our Services
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div whileHover={{ scale: 1.05 }} key={index}>
-              <Card service={service.name} className="rounded-2xl shadow-md">
-                <CardContent className="p-6 text-center">
-                  <h4 className="font-semibold text-lg mb-2">{service.name}</h4>
-                  <p className="text-pink-500 font-bold text-xl">
-                    KES {service.price}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-
-          {otherServices.map((service, index) => (
-            <motion.div whileHover={{ scale: 1.05 }} key={index}>
-              <Card service={service.name} className="rounded-2xl shadow-md">
-                <CardContent className="p-6 text-center">
-                  <h4 className="font-semibold text-lg mb-2">{service.name}</h4>
-                  <p className="text-pink-500 font-bold text-xl">
-                    KES {service.price}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-
-          {/* Special Offer */}
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Card service="Microblading" className="rounded-2xl shadow-md border-pink-400 border-2">
-              <CardContent className="p-6 text-center">
-                <h4 className="font-semibold text-lg mb-2">Microblading</h4>
-                <p className="line-through text-gray-400">KES 10,000</p>
-                <p className="text-pink-500 font-bold text-2xl">
-                  Now 8,000 (20% OFF)
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+        <FeaturedServices />
       </section>
 
-      {/* Booking Section */}
-      <section id="book" className="py-20 px-6 text-center bg-white">
-        <h3 className="text-3xl font-bold text-pink-600 mb-6">
-          Ready to Book?
-        </h3>
-        <Button
-          asChild
-          className="bg-pink-500 hover:bg-pink-600 text-white text-lg px-8 py-4 rounded-2xl shadow-lg"
-        >
-          <a
-            href="https://wa.me/254710101118"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Book on WhatsApp
-          </a>
-        </Button>
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 md:px-20 bg-pink-50">
+        <AboutSection />
+      </section>
+
+      {/* pricing Section */}
+      <section id="pricing" className="py-20 px-6 text-center bg-white">
+        <PricingTabs />
       </section>
 
       {/* Contact Section */}
@@ -326,10 +283,21 @@ export default function Home(): React.ReactElement {
             ></span>
           </a>
           <a
-            href="#book"
+            href="#about"
             className="relative group"
           >
-            Book Now
+            About
+            <span
+              className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
+              transition-all duration-[800ms] origin-center
+              group-hover:left-0 group-hover:right-0"
+            ></span>
+          </a>
+          <a
+            href="#pricing"
+            className="relative group"
+          >
+            Price List
             <span
               className="absolute left-1/2 right-1/2 -bottom-[2px] h-0.5 bg-rose-900 opacity-0 group-hover:opacity-100
               transition-all duration-[800ms] origin-center
