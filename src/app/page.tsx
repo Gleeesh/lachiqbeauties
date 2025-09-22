@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SlantedAnimatedGrid } from "@/components/ui/slantedAnimatedGrid";
 import FeaturedServices from "@/components/ui/featuredServices";
 import PricingTabs from "@/components/ui/pricingTabs";
 import AboutSection from "@/components/ui/aboutSection";
+import ContactSection from "@/components/ui/contactSection";
 
 export default function Home(): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -218,35 +219,18 @@ export default function Home(): React.ReactElement {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 md:px-20 bg-pink-50">
+      <section id="about" className="py-5 md:px-20 bg-pink-200">
         <AboutSection />
       </section>
 
       {/* pricing Section */}
-      <section id="pricing" className="py-20 px-6 text-center bg-white">
+      <section id="pricing" className="py-20 px-6 text-center bg-pink-200">
         <PricingTabs />
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-pink-50 text-center">
-        <h3 className="text-3xl font-bold text-pink-600 mb-8">Contact Us</h3>
-        <p className="text-lg mb-4">
-          WhatsApp:{" "}
-          <a
-            href="https://wa.me/254710101118"
-            className="text-pink-500 font-semibold"
-          >
-            0710101118
-          </a>
-        </p>
-        <div className="flex justify-center space-x-6">
-          <a href="#" className="text-pink-500 hover:text-pink-600">
-            <Instagram size={28} />
-          </a>
-          <a href="#" className="text-pink-500 hover:text-pink-600">
-            <Facebook size={28} />
-          </a>
-        </div>
+        <ContactSection />
       </section>
 
       {/* Footer */}

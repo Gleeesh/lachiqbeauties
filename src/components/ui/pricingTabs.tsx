@@ -66,7 +66,7 @@ export default function PricingTabs() {
 
         {/* Right Content */}
         <div>
-          <p className="text-rose-500 italic font-medium">Pricing</p>
+          <p className="text-rose-900 italic font-medium">Pricing</p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             OUR PRICING
           </h2>
@@ -83,7 +83,7 @@ export default function PricingTabs() {
                   ref={(el) => { tabRefs.current[tab] = el; }}
                   onClick={() => setActiveTab(tab as keyof typeof tabs)}
                   className={`pb-2 text-lg font-medium transition ${
-                    activeTab === tab ? "text-rose-600" : "text-gray-600 hover:text-rose-500"
+                    activeTab === tab ? "text-9ose-600" : "text-gray-600 hover:text-rose-500"
                   }`}
                 >
                   {tab}
@@ -93,7 +93,7 @@ export default function PricingTabs() {
 
             {/* Animated underline */}
             <motion.div
-              className="absolute bottom-0 h-[2px] bg-rose-600"
+              className="absolute bottom-0 h-[2px] bg-rose-900"
               animate={{ left: underlineProps.left, width: underlineProps.width }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
@@ -113,7 +113,7 @@ export default function PricingTabs() {
                 <div key={i} className="border-b border-gray-200 pb-4">
                   <div className="flex justify-between items-center">
                     <h3 className="text-lg font-semibold text-gray-800">{service.name}</h3>
-                    <span className="text-rose-600 font-bold">{service.price}</span>
+                    <span className="text-rose-900 font-bold">{service.price}</span>
                   </div>
                   <p className="text-gray-600 text-sm mt-1">{service.description}</p>
                 </div>
