@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function PricingTabs() {
   const tabs = {
@@ -20,14 +21,8 @@ export default function PricingTabs() {
     Pedicure: {
       image: "/assets/pedicure.jpg",
       services: [
-        { name: "Gel Pedicure", description: "A long-lasting manicure using gel polish cured under UV/LED light.", price: "1,000ksh" },
-        { name: "Tips", description: "Artificial nail extensions applied to enhance length and shape.", price: "1,000ksh" },
-        { name: "Builder Gel", description: "A strong gel overlay that adds strength and structure to natural nails.", price: "1,100ksh" },
-        { name: "Builder Gel with tips extension", description: "Combines builder gel with nail tips for added length and durability.", price: "1,400ksh" },
-        { name: "Gum gel on natural nails", description: "A flexible, putty-like gel applied to natural nails for strength.", price: "1,500ksh" },
-        { name: "Gum gel with extensions", description: "Gum gel used with tips to create durable, extended nails.", price: "1,800ksh" },
-        { name: "Acrylics on natural nails", description: "Acrylic overlay applied directly to natural nails for strength and polish.", price: "1,800ksh" },
-        { name: "Acrylics", description: "A classic nail extension method using liquid monomer and powder for long, strong nails.", price: "2,500ksh" },
+        { name: "Gel Pedicure", description: "A pampering gel polish pedicure that lasts for weeks.", price: "1,000ksh" },
+        { name: "Spa Pedicure", description: "Includes soaking, exfoliation, massage, and polish.", price: "1,500ksh" },
       ],
     },
     Lashes: {
@@ -44,7 +39,7 @@ export default function PricingTabs() {
         { name: "Full Face Beat", description: "A bold, full-coverage makeup style with dramatic detailing.", price: "1,500ksh" },
       ],
     },
-    Miscroblading: {
+    Microblading: {
       image: "/assets/microblading.jpg",
       services: [
         { name: "Microblading", description: "A semi-permanent eyebrow treatment using fine strokes to mimic natural hairs.", price: "10,000ksh" },
@@ -52,8 +47,10 @@ export default function PricingTabs() {
     },
   };
 
+  const tabKeys = Object.keys(tabs) as (keyof typeof tabs)[];
   const [activeTab, setActiveTab] = useState<keyof typeof tabs>("Manicure");
   const [underlineProps, setUnderlineProps] = useState({ left: 0, width: 0 });
+  const [showHints, setShowHints] = useState(true);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   useEffect(() => {
@@ -66,11 +63,21 @@ export default function PricingTabs() {
     }
   }, [activeTab]);
 
+  const handleSwipe = (direction: number) => {
+    const currentIndex = tabKeys.indexOf(activeTab);
+    const nextIndex = currentIndex + direction;
+    if (nextIndex >= 0 && nextIndex < tabKeys.length) {
+      setActiveTab(tabKeys[nextIndex]);
+      setShowHints(false);
+    }
+  };
+
   return (
-    <section className="py-20 px-6 md:px-20 bg-pink-50">
-      <div className="grid md:grid-cols-2 gap-10 items-center">
-        {/* Left Image with Animation */}
-        <div className="relative w-full h-full">
+    <section className="min-h-screen py-10 px-4 md:px-20 bg-pink-50 flex flex-col">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-8 flex-grow overflow-hidden">
+        
+        {/* Left Image (hidden on small screens) */}
+        <div className="relative w-full h-full hidden md:block">
           <AnimatePresence mode="wait">
             <motion.img
               key={tabs[activeTab].image}
@@ -80,30 +87,30 @@ export default function PricingTabs() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 30 }}
               transition={{ duration: 0.5 }}
-              className="w-full h-full object-cover rounded-lg shadow-lg absolute top-0 left-0"
+              className="w-full h-full object-cover rounded-lg shadow-lg"
             />
           </AnimatePresence>
         </div>
 
         {/* Right Content */}
-        <div>
-          <p className="text-rose-900 italic font-medium">Pricing</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        <div className="relative flex flex-col overflow-hidden">
+          <p className="text-rose-900 italic font-medium text-center md:text-left">Pricing</p>
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-2 text-center md:text-left">
             OUR PRICING
           </h2>
-          <p className="text-gray-700 mb-8">
+          <p className="text-gray-700 mb-4 text-sm md:text-base text-center md:text-left">
             Choose from our wide variety of services designed to pamper you.
           </p>
 
-          {/* Tabs */}
-          <div className="relative border-b border-gray-200 mb-6">
-            <div className="flex space-x-6">
-              {Object.keys(tabs).map((tab) => (
+          {/* Tabs row */}
+          <div className="relative border-b border-gray-200 mb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+            <div className="flex justify-center md:justify-start space-x-6 min-w-max">
+              {tabKeys.map((tab) => (
                 <button
                   key={tab}
                   ref={(el) => { tabRefs.current[tab] = el; }}
-                  onClick={() => setActiveTab(tab as keyof typeof tabs)}
-                  className={`pb-2 text-lg font-medium transition ${
+                  onClick={() => setActiveTab(tab)}
+                  className={`pb-2 text-sm md:text-lg font-medium transition snap-start ${
                     activeTab === tab ? "text-pink-200" : "text-gray-600 hover:text-rose-900"
                   }`}
                 >
@@ -111,8 +118,6 @@ export default function PricingTabs() {
                 </button>
               ))}
             </div>
-
-            {/* Animated underline */}
             <motion.div
               className="absolute bottom-0 h-[2px] bg-rose-900"
               animate={{ left: underlineProps.left, width: underlineProps.width }}
@@ -120,27 +125,63 @@ export default function PricingTabs() {
             />
           </div>
 
-          {/* Services List with Animation and scrollable overflow */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className="space-y-6 max-h-[420px] overflow-y-auto overflow-x-hidden"
-            >
-              {tabs[activeTab].services.map((service, i) => (
-                <div key={i} className="border-b border-gray-200 pb-4">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold text-gray-800">{service.name}</h3>
-                    <span className="text-rose-900 font-bold">{service.price}</span>
+          {/* Services List */}
+          <div className="relative flex-grow overflow-y-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.4 }}
+                className="space-y-4 md:space-y-6"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x < -100) handleSwipe(1);
+                  if (info.offset.x > 100) handleSwipe(-1);
+                }}
+              >
+                {tabs[activeTab].services.map((service, i) => (
+                  <div key={i} className="border-b border-gray-200 pb-2 md:pb-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-sm md:text-lg font-semibold text-gray-800">{service.name}</h3>
+                      <span className="text-rose-900 font-bold text-sm md:text-base">{service.price}</span>
+                    </div>
+                    <p className="hidden md:block text-gray-600 text-sm mt-1">
+                      {service.description}
+                    </p>
                   </div>
-                  <p className="text-gray-600 text-sm mt-1">{service.description}</p>
-                </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Swipe Hints */}
+            <AnimatePresence>
+              {showHints && (
+                <>
+                  <motion.div
+                    className="absolute inset-y-0 left-0 flex items-center md:hidden"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.6 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <ChevronLeft className="w-6 h-6 text-gray-400 animate-pulse" />
+                  </motion.div>
+                  <motion.div
+                    className="absolute inset-y-0 right-0 flex items-center md:hidden"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.6 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <ChevronRight className="w-6 h-6 text-gray-400 animate-pulse" />
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

@@ -271,7 +271,7 @@ export default function Home(): React.ReactElement {
             height={50}
           />
         </span>
-        <nav className="flex space-x-20 text-rose-900 font-medium mb-4">
+        <nav className="flex flex-wrap justify-center space-x-6 md:space-x-20 text-rose-900 font-medium mb-4 w-full">
           <a
             href="#home"
             className="relative group"
