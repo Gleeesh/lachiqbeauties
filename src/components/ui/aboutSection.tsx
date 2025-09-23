@@ -11,7 +11,7 @@ export default function AboutSection() {
           <Image
             src="/assets/hero.jpeg"
             alt="Nail Artist"
-            width={600}
+            width={700}
             height={80}
             className="w-full h-180 object-cover rounded-lg shadow-lg"
             priority
@@ -23,7 +23,7 @@ export default function AboutSection() {
           <p className="text-rose-900 italic font-medium">About us</p>
 
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            WELCOME TO LACHIQ!
+            WELCOME TO LA<span className= "text-rose-900">CHIQ!</span> 
           </h2>
 
           <p className="text-gray-700 leading-relaxed">
@@ -40,7 +40,7 @@ export default function AboutSection() {
 
           {/* Contact Info */}
           <div className="flex items-center space-x-4 mt-4">
-            <div className="p-3 bg-rose-100 rounded-full">
+            <div className="p-3 bg-rose-200 rounded-full">
               <Phone className="text-rose-900 w-6 h-6" />
             </div>
             <div>

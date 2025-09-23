@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
+import { FaTiktok, FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SlantedAnimatedGrid } from "@/components/ui/slantedAnimatedGrid";
@@ -233,6 +234,33 @@ export default function Home(): React.ReactElement {
         <ContactSection />
       </section>
 
+      {/* Fixed Social Icons */}
+      <div className="fixed top-1/2 right-2 z-50 flex flex-col items-center -translate-y-1/2">
+        <a
+          href="https://wa.me/254710101118"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white rounded-full p-2 mb-0"
+        >
+          <FaWhatsapp size={22} className="text-rose-900" />
+        </a>
+        <a
+          href="https://www.tiktok.com/@lachiqbeauties"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white rounded-full p-2 mb-0"
+        >
+          <FaTiktok size={22} className="text-rose-900" />
+        </a>
+        <a
+          href="https://www.instagram.com/la_chiq_beauties"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white rounded-full p-2"
+        >
+          <Instagram size={22} className="text-rose-900" />
+        </a>
+      </div>
       {/* Footer */}
       <footer className="w-full flex flex-col items-center justify-center p-6 bg-white border-t">
         <span className="flex items-center mb-4">

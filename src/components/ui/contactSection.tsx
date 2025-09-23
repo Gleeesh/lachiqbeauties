@@ -7,9 +7,12 @@ const ContactSection = () => {
   return (
     <div className="bg-pink-50 min-h-screen flex flex-col items-center justify-start py-10 px-4">
       {/* Top Text */}
-      <h2 className="text-center text-rose-900 font-large mb-6">
+      <h2 className="text-center italic text-rose-900 font-medium mb-6">
         Contact
       </h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            CONTACT US
+          </h2>
       <p className="text-center text-gray-800 font-medium mb-6">
         Do not forget to book an appointment to get the best service!
       </p>
@@ -37,9 +40,9 @@ const ContactSection = () => {
           </div>
           <h3 className="font-bold text-gray-800 text-lg mb-2">Address</h3>
           <p className="text-gray-600">
-            59 Queen Street,
+            Uhuru Highway, 
             <br />
-            New York, NY 10002
+            Murang&#39;a
           </p>
         </div>
 
@@ -49,8 +52,7 @@ const ContactSection = () => {
             <Phone className="text-pink-700 w-7 h-7" />
           </div>
           <h3 className="font-bold text-gray-800 text-lg mb-2">Phone</h3>
-          <p className="text-gray-600">+1 (234) 567 89 00</p>
-          <p className="text-gray-600">+1 (234) 567 89 01</p>
+          <p className="text-gray-600">0710101118</p>
         </div>
 
         {/* Email */}
@@ -59,8 +61,7 @@ const ContactSection = () => {
             <Mail className="text-pink-700 w-7 h-7" />
           </div>
           <h3 className="font-bold text-gray-800 text-lg mb-2">Email</h3>
-          <p className="text-gray-600">lotus.request@email.com</p>
-          <p className="text-gray-600">lotus@email.com</p>
+          <p className="text-gray-600">pending@email.com</p>
         </div>
       </div>
     </div>

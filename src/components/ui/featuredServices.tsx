@@ -12,27 +12,27 @@ const services = [
   {
     title: "Manicure",
     price: "400ksh",
-    img: "/assets/gridimages/img1.jpg",
-  },
-  {
-    title: "Pedicure",
-    price: "600ksh",
-    img: "/assets/gridimages/img2.jpg",
+    img: "/assets/manicure.jpg",
   },
   {
     title: "Microblading",
     price: "10k",
-    img: "/assets/gridimages/img3.jpg",
+    img: "/assets/microblading.jpg",
+  },
+  {
+    title: "Pedicure",
+    price: "600ksh",
+    img: "/assets/pedicure.jpg",
   },
   {
     title: "Lashes",
     price: "1500ksh",
-    img: "/assets/gridimages/img1.jpg",
+    img: "/assets/lashes.jpg",
   },
   {
     title: "Make-Up",
     price: "1000ksh",
-    img: "/assets/gridimages/img2.jpg",
+    img: "/assets/makeup.jpg",
   },
 ];
 
@@ -57,11 +57,14 @@ export default function FeaturedServices() {
     <section className="bg-pink-200 py-5">
       <div className="max-w-6xl mx-auto px-4 text-center">
         {/* Heading */}
+        <h2 className="text-center italic text-rose-900 font-medium mb-6">
+        Services
+        </h2>
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800 uppercase tracking-wide">
           Featured Services
         </h2>
         <p className="text-gray-600 mt-2">
-          All kinds of procedures for your hands and feet.
+          All kinds of procedures for more than your hands and feet.
         </p>
 
         {/* Swiper Carousel */}
@@ -79,63 +82,62 @@ export default function FeaturedServices() {
           <div className="swiper-button-next !absolute -right-8 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2 hover:bg-pink-100 z-10 flex items-center justify-center">
             <ChevronRight className="w-5 h-5 text-gray-600" />
           </div>
-
-          <Swiper
-            modules={[Navigation]}
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            spaceBetween={24}
-            slidesPerView={1}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            className="pb-10"
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            centeredSlides={true}
-            loop={true}
-            allowTouchMove={!isHovered}
-          >
-            {services.map((service, idx) => (
-              <SwiperSlide key={idx}>
-                {({ isActive }) => (
-                  <div
-                    className={`bg-pink-200 overflow-hidden shadow-sm flex flex-col items-center transition-all duration-700 ${
-                      isActive
-                        ? "scale-105 z-10"
-                        : "scale-95 opacity-80"
-                    }`}
-                  >
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          spaceBetween={24}
+          slidesPerView={1}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="pb-10"
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          centeredSlides={true}
+          loop={true}
+          allowTouchMove={!isHovered}
+        >
+          {services.map((service, idx) => (
+            <SwiperSlide key={idx}>
+              {({ isActive }) => (
+                <div
+                  className={`bg-pink-200 overflow-hidden shadow-sm flex flex-col items-center transition-all duration-700 ${
+                    isActive ? "scale-105 z-10" : "scale-95 opacity-80"
+                  }`}
+                >
+                  <div className="w-full h-[320px] flex items-center justify-center">
                     <Image
                       src={service.img}
                       alt={service.title}
                       width={400}
-                      height={500}
+                      height={320}
                       className={`w-full h-full object-cover transition-all duration-700 ${
                         isActive ? "scale-110" : "scale-100"
                       }`}
                     />
-                    {/* Text */}
-                    <div className="p-5 text-center">
-                      <h3 className="text-lg font-semibold text-gray-800">
-                        {service.title}{" "}
-                        <span className="text-gray-500 font-normal">
-                          — from{" "}
-                          <span className="text-rose-900 font-semibold">
-                            {service.price}
-                          </span>
-                        </span>
-                      </h3>
-                    </div>
                   </div>
-                )}
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                  {/* Text */}
+                  <div className="p-5 text-center">
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {service.title}{" "}
+                      <span className="text-gray-500 font-normal">
+                        — from{" "}
+                        <span className="text-rose-900 font-semibold">
+                          {service.price}
+                        </span>
+                      </span>
+                    </h3>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
         </div>
       </div>
     </section>

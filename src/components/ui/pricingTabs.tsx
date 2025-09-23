@@ -5,28 +5,49 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function PricingTabs() {
   const tabs = {
     Manicure: {
-      image: "/assets/pricing-manicure.jpg", // replace with real image
+      image: "/assets/manicure.jpg",
       services: [
-        { name: "Buff manicure", description: "Well-groomed nails without any polish.", price: "$12" },
-        { name: "Glue manicure", description: "Long-lasting manicure with resin glue acting as a base coat.", price: "$20" },
-        { name: "CND Shellac or OPI Gel manicure", description: "Long-lasting manicure with gel nail polish.", price: "$25" },
-        { name: "French manicure", description: "Classic French style manicure.", price: "$15" },
+        { name: "Gel Manicure", description: "A long-lasting manicure using gel polish cured under UV/LED light.", price: "400ksh" },
+        { name: "Tips", description: "Artificial nail extensions applied to enhance length and shape.", price: "1,000ksh" },
+        { name: "Builder Gel", description: "A strong gel overlay that adds strength and structure to natural nails.", price: "1,100ksh" },
+        { name: "Builder Gel with tips extension", description: "Combines builder gel with nail tips for added length and durability.", price: "1,400ksh" },
+        { name: "Gum gel on natural nails", description: "A flexible, putty-like gel applied to natural nails for strength.", price: "1,500ksh" },
+        { name: "Gum gel with extensions", description: "Gum gel used with tips to create durable, extended nails.", price: "1,800ksh" },
+        { name: "Acrylics on natural nails", description: "Acrylic overlay applied directly to natural nails for strength and polish.", price: "1,800ksh" },
+        { name: "Acrylics", description: "A classic nail extension method using liquid monomer and powder for long, strong nails.", price: "2,500ksh" },
       ],
     },
     Pedicure: {
-      image: "/assets/pricing-pedicure.jpg",
+      image: "/assets/pedicure.jpg",
       services: [
-        { name: "Basic pedicure", description: "Essential foot care and polish.", price: "$18" },
-        { name: "Spa pedicure", description: "Relaxing pedicure with scrub and massage.", price: "$30" },
-        { name: "Gel pedicure", description: "Durable gel polish pedicure.", price: "$28" },
+        { name: "Gel Pedicure", description: "A long-lasting manicure using gel polish cured under UV/LED light.", price: "1,000ksh" },
+        { name: "Tips", description: "Artificial nail extensions applied to enhance length and shape.", price: "1,000ksh" },
+        { name: "Builder Gel", description: "A strong gel overlay that adds strength and structure to natural nails.", price: "1,100ksh" },
+        { name: "Builder Gel with tips extension", description: "Combines builder gel with nail tips for added length and durability.", price: "1,400ksh" },
+        { name: "Gum gel on natural nails", description: "A flexible, putty-like gel applied to natural nails for strength.", price: "1,500ksh" },
+        { name: "Gum gel with extensions", description: "Gum gel used with tips to create durable, extended nails.", price: "1,800ksh" },
+        { name: "Acrylics on natural nails", description: "Acrylic overlay applied directly to natural nails for strength and polish.", price: "1,800ksh" },
+        { name: "Acrylics", description: "A classic nail extension method using liquid monomer and powder for long, strong nails.", price: "2,500ksh" },
       ],
     },
-    Treatments: {
-      image: "/assets/pricing-treatments.jpg",
+    Lashes: {
+      image: "/assets/lashes.jpg",
       services: [
-        { name: "Paraffin treatment", description: "Moisturizing and softening hand/foot treatment.", price: "$22" },
-        { name: "Nail strengthening", description: "Treatment to repair and protect nails.", price: "$15" },
-        { name: "Cuticle care", description: "Gentle cuticle treatment and hydration.", price: "$10" },
+        { name: "Cluster Lashes", description: "Small groups of lashes applied for a fuller, dramatic look.", price: "1,500ksh" },
+        { name: "Individual Lashes", description: "Single lashes applied one by one for a natural, enhanced appearance.", price: "2,500ksh" },
+      ],
+    },
+    Make_Up: {
+      image: "/assets/makeup.jpg",
+      services: [
+        { name: "Soft Glam", description: "A natural yet polished makeup look with soft definition and glow.", price: "1,000ksh" },
+        { name: "Full Face Beat", description: "A bold, full-coverage makeup style with dramatic detailing.", price: "1,500ksh" },
+      ],
+    },
+    Miscroblading: {
+      image: "/assets/microblading.jpg",
+      services: [
+        { name: "Microblading", description: "A semi-permanent eyebrow treatment using fine strokes to mimic natural hairs.", price: "10,000ksh" },
       ],
     },
   };
@@ -71,7 +92,7 @@ export default function PricingTabs() {
             OUR PRICING
           </h2>
           <p className="text-gray-700 mb-8">
-            Choose from our wide variety of manicure, pedicure and treatment services designed to pamper you.
+            Choose from our wide variety of services designed to pamper you.
           </p>
 
           {/* Tabs */}
@@ -83,7 +104,7 @@ export default function PricingTabs() {
                   ref={(el) => { tabRefs.current[tab] = el; }}
                   onClick={() => setActiveTab(tab as keyof typeof tabs)}
                   className={`pb-2 text-lg font-medium transition ${
-                    activeTab === tab ? "text-9ose-600" : "text-gray-600 hover:text-rose-500"
+                    activeTab === tab ? "text-pink-200" : "text-gray-600 hover:text-rose-900"
                   }`}
                 >
                   {tab}
@@ -99,7 +120,7 @@ export default function PricingTabs() {
             />
           </div>
 
-          {/* Services List with Animation */}
+          {/* Services List with Animation and scrollable overflow */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -107,7 +128,7 @@ export default function PricingTabs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4 }}
-              className="space-y-6"
+              className="space-y-6 max-h-[420px] overflow-y-auto overflow-x-hidden"
             >
               {tabs[activeTab].services.map((service, i) => (
                 <div key={i} className="border-b border-gray-200 pb-4">
