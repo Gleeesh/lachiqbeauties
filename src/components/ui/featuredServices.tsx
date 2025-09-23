@@ -10,29 +10,29 @@ import SwiperCore from "swiper";
 
 const services = [
   {
-    title: "Nail Art",
-    price: "$5",
+    title: "Manicure",
+    price: "400ksh",
     img: "/assets/gridimages/img1.jpg",
   },
   {
     title: "Pedicure",
-    price: "$15",
+    price: "600ksh",
     img: "/assets/gridimages/img2.jpg",
   },
   {
-    title: "Treatment",
-    price: "$10",
+    title: "Microblading",
+    price: "10k",
     img: "/assets/gridimages/img3.jpg",
   },
   {
-    title: "Luxury Spa",
-    price: "$25",
-    img: "/assets/gridimages/img4.jpg",
+    title: "Lashes",
+    price: "1500ksh",
+    img: "/assets/gridimages/img1.jpg",
   },
   {
-    title: "Gel Polish",
-    price: "$12",
-    img: "/assets/gridimages/img5.jpg",
+    title: "Make-Up",
+    price: "1000ksh",
+    img: "/assets/gridimages/img2.jpg",
   },
 ];
 

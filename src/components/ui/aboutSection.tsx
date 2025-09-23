@@ -9,11 +9,11 @@ export default function AboutSection() {
         {/* Left Image */}
         <div>
           <Image
-            src="/assets/about.jpg"
+            src="/assets/hero.jpeg"
             alt="Nail Artist"
             width={600}
-            height={400}
-            className="w-full h-full object-cover rounded-lg shadow-lg"
+            height={80}
+            className="w-full h-180 object-cover rounded-lg shadow-lg"
             priority
           />
         </div>
@@ -23,18 +23,18 @@ export default function AboutSection() {
           <p className="text-rose-900 italic font-medium">About us</p>
 
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            WELCOME TO LOTUS!
+            WELCOME TO LACHIQ!
           </h2>
 
           <p className="text-gray-700 leading-relaxed">
-            Lotus is a perfect place to get high-quality nail care and spa
+            LaChiq is a perfect place to get high-quality nail care and spa
             services in a clean and welcoming atmosphere.
           </p>
 
           <p className="text-gray-700 leading-relaxed">
             Our licensed nail artists are always aware of the latest trends and
             truly care about their clients. We also offer free Wi-Fi, relaxing
-            music, and complimentary cookies and beverages to make your
+            music, and complimentary cookies to make your
             experience more enjoyable.
           </p>
 
