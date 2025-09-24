@@ -21,8 +21,14 @@ export default function PricingTabs() {
     Pedicure: {
       image: "/assets/pedicure.jpg",
       services: [
-        { name: "Gel Pedicure", description: "A pampering gel polish pedicure that lasts for weeks.", price: "1,000ksh" },
-        { name: "Spa Pedicure", description: "Includes soaking, exfoliation, massage, and polish.", price: "1,500ksh" },
+        { name: "Gel Manicure", description: "A long-lasting manicure using gel polish cured under UV/LED light.", price: "400ksh" },
+        { name: "Tips", description: "Artificial nail extensions applied to enhance length and shape.", price: "1,000ksh" },
+        { name: "Builder Gel", description: "A strong gel overlay that adds strength and structure to natural nails.", price: "1,100ksh" },
+        { name: "Builder Gel with tips extension", description: "Combines builder gel with nail tips for added length and durability.", price: "1,400ksh" },
+        { name: "Gum gel on natural nails", description: "A flexible, putty-like gel applied to natural nails for strength.", price: "1,500ksh" },
+        { name: "Gum gel with extensions", description: "Gum gel used with tips to create durable, extended nails.", price: "1,800ksh" },
+        { name: "Acrylics on natural nails", description: "Acrylic overlay applied directly to natural nails for strength and polish.", price: "1,800ksh" },
+        { name: "Acrylics", description: "A classic nail extension method using liquid monomer and powder for long, strong nails.", price: "2,500ksh" },
       ],
     },
     Lashes: {
@@ -103,7 +109,7 @@ export default function PricingTabs() {
           </p>
 
           {/* Tabs row */}
-          <div className="relative border-b border-gray-200 mb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+          <div className="relative border-b border-gray-200 mb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:overflow-visible">
             <div className="flex justify-center md:justify-start space-x-6 min-w-max">
               {tabKeys.map((tab) => (
                 <button
@@ -134,7 +140,7 @@ export default function PricingTabs() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4 }}
-                className="space-y-4 md:space-y-6"
+                className="space-y-4 md:space-y-6  max-h-[420px] overflow-y-auto overflow-x-hidden"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 onDragEnd={(_, info) => {
