@@ -21,14 +21,13 @@ export default function PricingTabs() {
     Pedicure: {
       image: "/assets/pedicure.jpg",
       services: [
-        { name: "Gel Manicure", description: "A long-lasting manicure using gel polish cured under UV/LED light.", price: "400ksh" },
-        { name: "Tips", description: "Artificial nail extensions applied to enhance length and shape.", price: "1,000ksh" },
-        { name: "Builder Gel", description: "A strong gel overlay that adds strength and structure to natural nails.", price: "1,100ksh" },
-        { name: "Builder Gel with tips extension", description: "Combines builder gel with nail tips for added length and durability.", price: "1,400ksh" },
-        { name: "Gum gel on natural nails", description: "A flexible, putty-like gel applied to natural nails for strength.", price: "1,500ksh" },
-        { name: "Gum gel with extensions", description: "Gum gel used with tips to create durable, extended nails.", price: "1,800ksh" },
-        { name: "Acrylics on natural nails", description: "Acrylic overlay applied directly to natural nails for strength and polish.", price: "1,800ksh" },
-        { name: "Acrylics", description: "A classic nail extension method using liquid monomer and powder for long, strong nails.", price: "2,500ksh" },
+        { name: "Pedicure", description: "Classic foot care treatment for clean, healthy nails and skin.", price: "600ksh" },
+        { name: "Pedicure and Gel", description: "A full pedicure finished with long-lasting gel polish.", price: "1,000ksh" },
+        { name: "Pedicure Polish", description: "Standard pedicure with regular nail polish application.", price: "800ksh" },
+        { name: "Tips on toes", description: "Nail extensions added to toes for length and style.", price: "800ksh" },
+        { name: "Gum gel on toes", description: "Flexible gel overlay that strengthens and enhances toenails.", price: "1,200ksh" },
+        { name: "Builder toes", description: "Strong builder gel applied for durability and structure.", price: "1,000ksh" },
+        { name: "Acrylics on natural nails", description: "Acrylic overlay or extensions for long-lasting enhancement.", price: "1,500ksh" },
       ],
     },
     Lashes: {

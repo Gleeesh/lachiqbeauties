@@ -21,14 +21,15 @@ const ContactSection = () => {
       <div className="w-full max-w-5xl border-4 border-pink-200 h-72 mb-12">
         <iframe
           title="Google Map"
-          src="https://www.google.com/maps/place/La+Chiq/@-0.7168408,37.1438933,17z/data=!3m1!4b1!4m6!3m5!1s0x1828980cc5b27e83:0xe6be5219bfa80692!8m2!3d-0.7168408!4d37.1464736!16s%2Fg%2F11ssxht1cv?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.502433561136!2d37.15467091000567!3d-0.720990699268943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18289877ed9f015f%3A0xec136c9ae47e5a21!2sLa%20Chiq%20Beauties(Nail%20Salon)!5e0!3m2!1sen!2ske!4v1758802633942!5m2!1sen!2ske"
           width="100%"
           height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        />
+        < iframe/>
       </div>
 
       {/* Contact Info */}
